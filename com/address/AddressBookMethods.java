@@ -95,4 +95,14 @@ public class AddressBookMethods {
 			}
 		}
 	}
+	void delete() {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter the Name whose data to delete");
+		String name = scanner.next();
+		for (int i = 0; i < addressBook.size(); i++) {
+			if (addressBook.get(i).getfirstName().equalsIgnoreCase(name)) {
+				addressBook.remove(i);
+			}
+		}
+	}
 }

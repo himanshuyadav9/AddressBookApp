@@ -7,5 +7,6 @@ public class AddressBookMain {
 		addressMethod.add();
 		addressMethod.show();
 		addressMethod.edit();
+		addressMethod.delete();
 	}
 }
