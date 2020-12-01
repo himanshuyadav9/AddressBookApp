@@ -2,15 +2,27 @@ package com.address;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 public class AddressBookMethods {
-	ArrayList<PersonalInformation> addressBook = new ArrayList<PersonalInformation>();
+	// ArrayList<Address> addressBook = new ArrayList<Address>();
+		Set<PersonalInformation> addressBook = new LinkedHashSet<PersonalInformation>();
 
-	void add() {
-		PersonalInformation info = new PersonalInformation();
-		 addressBook.add(info);
-	}
+		void add() {
+			
+			boolean flag=true;
+			PersonalInformation info = new PersonalInformation();
+			for (PersonalInformation iterator : addressBook) {
+				if (iterator.getfirstName().equalsIgnoreCase(info.getfirstName()))
+					flag=false;
+			}
+			if(flag)
+				addressBook.add(info);
+			
+		}
+
 	void show() {
 		Iterator itr = addressBook.iterator();
 		while (itr.hasNext()) {
@@ -39,69 +51,59 @@ public class AddressBookMethods {
 			int choice = scanner.nextInt();
 			switch (choice) {
 			case 1:
-				System.out.println("Enter the new Address ");
-				String newAddress = scanner.next();
-				for (int i = 0; i < addressBook.size(); i++) {
-					if (addressBook.get(i).getfirstName().equalsIgnoreCase(name)) {
-						PersonalInformation address = addressBook.get(i);
-						address.setaddress(newAddress);
-					}
-				}
-				break;
-			case 2:
-				System.out.println("Enter the new City");
-				String newCity = scanner.next();
-				for (int i = 0; i < addressBook.size(); i++) {
-					if (addressBook.get(i).getfirstName().equalsIgnoreCase(name)) {
-						PersonalInformation address = addressBook.get(i);
-						address.setcity(newCity);
-					}
-				}
-				break;
-			case 3:
-				System.out.println("Enter the new State");
-				String newState = scanner.next();
-				for (int i = 0; i < addressBook.size(); i++) {
-					if (addressBook.get(i).getfirstName().equalsIgnoreCase(name)) {
-						PersonalInformation address = addressBook.get(i);
-						address.setstate(newState);
-					}
-				}
-				break;
-			case 4:
-				System.out.println("Enter the new Zip");
-				String newZip = scanner.next();
-				for (int i = 0; i < addressBook.size(); i++) {
-					if (addressBook.get(i).getfirstName().equalsIgnoreCase(name)) {
-						PersonalInformation address = addressBook.get(i);
-						address.setzip(newZip);
-					}
-				}
-				break;
-			case 5:
-				System.out.println("Enter the new Phone Number");
-				String newPhoneNumber = scanner.next();
-				for (int i = 0; i < addressBook.size(); i++) {
-					if (addressBook.get(i).getfirstName().equalsIgnoreCase(name)) {
-						PersonalInformation address = addressBook.get(i);
-						address.setphoneNumber(newPhoneNumber);
-					}
-				}
-				break;
-			case 0:
-				return;
-			default:
-				System.out.println("Please Enter Correct Option");
+			System.out.println("Enter the new Address Name");
+			String newAddresss = scanner.next();
+			for (PersonalInformation iterator : addressBook) {
+				if (iterator.getfirstName().equalsIgnoreCase(name))
+					iterator.setaddress(newAddresss);
 			}
+			break;
+		case 2:
+			System.out.println("Enter the new City");
+			String newCity = scanner.next();
+			for (PersonalInformation iterator : addressBook) {
+				if (iterator.getfirstName().equalsIgnoreCase(name))
+					iterator.setcity(newCity);
+			}
+			break;
+		case 3:
+			System.out.println("Enter the new State");
+			String newState = scanner.next();
+			for (PersonalInformation iterator : addressBook) {
+				if (iterator.getfirstName().equalsIgnoreCase(name))
+					iterator.setstate(newState);
+			}
+			break;
+		case 4:
+			System.out.println("Enter the new Zip");
+			String newZip = scanner.next();
+			for (PersonalInformation iterator : addressBook) {
+				if (iterator.getfirstName().equalsIgnoreCase(name))
+					iterator.setzip(newZip);
+			}
+			break;
+		case 5:
+			System.out.println("Enter the new Phone Number");
+			String newPhoneNumber = scanner.next();
+			for (PersonalInformation iterator : addressBook) {
+				if (iterator.getfirstName().equalsIgnoreCase(name))
+					iterator.setphoneNumber(newPhoneNumber);
+			}
+			break;
+		case 0:
+			return;
+		default:
+			System.out.println("Please Enter Correct Option");
+		  }
 		}
 	}
 	void delete() {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Enter the Name whose data to delete");
 		String name = scanner.next();
-		for (int i = 0; i < addressBook.size(); i++) {
-			if (addressBook.get(i).getfirstName().equalsIgnoreCase(name)) {
-				addressBook.remove(i);
+		for (PersonalInformation iterator : addressBook) {
+			if (iterator.getfirstName().equalsIgnoreCase(name)) {
+				addressBook.remove(iterator);
 				System.out.println("Name deleted");
 			}
 			else
