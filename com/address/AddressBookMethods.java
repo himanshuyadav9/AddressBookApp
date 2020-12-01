@@ -102,6 +102,11 @@ public class AddressBookMethods {
 		for (int i = 0; i < addressBook.size(); i++) {
 			if (addressBook.get(i).getfirstName().equalsIgnoreCase(name)) {
 				addressBook.remove(i);
+				System.out.println("Name deleted");
+			}
+			else
+			{
+				System.out.println("given name is not available in addressbook");
 			}
 		}
 	}
