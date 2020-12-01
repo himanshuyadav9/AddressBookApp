@@ -73,7 +73,7 @@ public class PersonalInformation {
 		return zip;
 	}
 
-	public void setzip() {
+	public void setzip(String zip) {
 		this.zip = zip;
 	}
 
